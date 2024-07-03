@@ -9,7 +9,11 @@ def wood_loop():
             if can_harvest():
                 harvest()
 
-            plant(Entities.Bush)
+            # Alternate tree and bush in grid
+            if get_pos_x() % 2 == get_pos_y() % 2:
+                plant(Entities.Tree)
+            else:
+                plant(Entities.Bush)
 
             move(North)
 
