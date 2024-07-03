@@ -21,3 +21,4 @@ def wood_loop():
 
         if get_pos_x() == 0:
             current_loop +=1
+            handle_tank_nb()

@@ -13,7 +13,9 @@ def hay_loop():
                 handle_ground(Grounds.Turf)
 
             move(North)
+
         move(East)
 
         if get_pos_x() == 0:
             current_loop += 1
+            handle_tank_nb()
