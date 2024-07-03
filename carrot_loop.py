@@ -6,7 +6,7 @@ def carrot_loop():
     needed_seeds_nb = get_world_size()**2
 
     while current_loop <= wanted_loops:
-        if num_items(Items.Carrot_Seed) < needed_seeds_nb:
+        if get_pos_x() == 0 and num_items(Items.Carrot_Seed) < needed_seeds_nb:
             if num_items(Items.Hay) < needed_seeds_nb:
                 hay_loop()
             elif num_items(Items.Wood) < needed_seeds_nb:
