@@ -23,6 +23,7 @@ def carrot_loop():
                 handle_ground(Grounds.Soil)
 
             plant(Entities.Carrots)
+            handle_water()
 
             move(North)
 
