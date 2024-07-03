@@ -1,3 +1,5 @@
+from __builtins__ import *
+
 def hay_loop():
     current_loop = 0
     wanted_loops = get_world_size()**2
