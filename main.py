@@ -1,3 +1,4 @@
 from __builtins__ import *
 
-harvest()
+while True:
+    harvest()
