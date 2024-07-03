@@ -12,8 +12,7 @@ def carrot_loop():
             elif num_items(Items.Wood) < needed_seeds_nb:
                 wood_loop()
             else:
-                for i in range(needed_seeds_nb):
-                    trade(Items.Carrot_Seed)
+                trade(Items.Carrot_Seed, needed_seeds_nb)
 
         for i in range(get_world_size()):
             if can_harvest():
