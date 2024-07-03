@@ -19,8 +19,7 @@ def carrot_loop():
             if can_harvest():
                 harvest()
 
-            if get_ground_type() != Grounds.Soil:
-                till()
+            handle_ground(Grounds.Soil)
 
             plant(Entities.Carrots)
 

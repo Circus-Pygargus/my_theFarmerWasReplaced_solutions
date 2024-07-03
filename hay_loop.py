@@ -9,8 +9,7 @@ def hay_loop():
             if can_harvest():
                 harvest()
 
-            if get_ground_type() != Grounds.Turf:
-                till()
+            handle_ground(Grounds.Turf)
 
             move(North)
         move(East)
