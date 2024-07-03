@@ -1,4 +1,5 @@
 from __builtins__ import *
 
 while True:
-    harvest()
+    if can_harvest():
+        harvest()
