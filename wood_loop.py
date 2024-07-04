@@ -11,9 +11,6 @@ def wood_loop():
                 pumpkin_loop()
             trade(Items.Fertilizer, needed_fertilizer)
 
-        if get_pos_x() == 0:
-            handle_tank_nb()
-
         for i in range(get_world_size()):
             if can_harvest():
                 harvest()
