@@ -3,18 +3,26 @@ from __builtins__ import *
 def power_loop():
     continue_main_loop = True
     needed_seeds_nb = 3 * get_world_size()**2
+    needed_fertilizer = 2 * get_world_size()**2
     is_first_loop = True
     harvested_times = 0
     max_harvested_times = 2 * get_world_size()**2
     fields_positions = []
     field_petals_nbs = []
 
-    while continue_main_loop:
-        if get_pos_x() == 0 and num_items(Items.Sunflower_Seed) <= needed_seeds_nb:
-            if needed_seeds_nb > num_items(Items.Carrot):
-                carrot_loop()
+    if num_items(Items.Fertilizer) < needed_fertilizer:
+        if 10 * num_items(Items.Pumpkin) < needed_fertilizer:
+            pumpkin_loop()
+        trade(Items.Fertilizer, needed_fertilizer)
 
-            trade(Items.Sunflower_Seed, needed_seeds_nb)
+    while continue_main_loop:
+        if get_pos_x() == 0:
+            handle_tank_nb()
+
+            if num_items(Items.Sunflower_Seed) <= needed_seeds_nb:
+                if needed_seeds_nb > num_items(Items.Carrot):
+                    carrot_loop()
+                trade(Items.Sunflower_Seed, needed_seeds_nb)
 
         for field_id in range(get_world_size()):
             if is_first_loop:
@@ -41,9 +49,10 @@ def power_loop():
                     field_to_harvest_pos = fields_positions[field_to_harvest_id]
                     go_to_field(field_to_harvest_pos[0], field_to_harvest_pos[1])
 
-                    while not can_harvest():
-                        do_a_flip()
+                    if not can_harvest():
+                        use_item(Items.Fertilizer)
                     harvest()
+                    handle_water()
                     harvested_times += 1
 
                     field_petals_nbs.remove(max_petals_nb)
