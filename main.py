@@ -1,3 +1,5 @@
 while True:
-    harvest()
+    if can_harvest():
+        harvest()
+        plant(Entities.Bush)
     move(North)
